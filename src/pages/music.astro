@@ -1,0 +1,13 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+const releases = await getCollection("releases");
+const sorted = releases.filter((r)=>r.data.title).sort((a,b)=>{ const ad=a.data.released?Number(a.data.released):0; const bd=b.data.released?Number(b.data.released):0; return bd-ad; });
+const formatDate = (date) => date ? new Intl.DateTimeFormat("ja-JP", { year:"numeric", month:"2-digit", day:"2-digit" }).format(date) : "Release date unknown";
+---
+<BaseLayout title="Music" description="うろ覚えオレンジの音楽作品一覧です。">
+  <section class="page-header"><p class="eyebrow">Discography</p><h1>Music</h1><p class="lead">アルバム、EP、シングル、クロスフェードなどの作品一覧。</p></section>
+  <section class="release-list">
+    {sorted.map((release) => (<article class="release-detail" id={release.slug}><div class="artwork large">Artwork</div><div class="release-body"><p class="tag">{release.data.type}</p><h2>{release.data.title}</h2><p class="meta">{formatDate(release.data.released)}{release.data.market ? ` / ${release.data.market}` : ""}</p>{release.body && <p>{release.body}</p>}{release.data.tracks.length > 0 && (<><h3>Tracks</h3><ol class="track-list">{release.data.tracks.map((track)=>(<li>{track.url ? <a href={track.url} target="_blank" rel="noopener noreferrer">{track.title}</a> : track.title}</li>))}</ol></>)}<div class="link-row">{release.data.xfade && <a class="button small" href={release.data.xfade} target="_blank" rel="noopener noreferrer">X-fade</a>}</div>{release.data.notes.length > 0 && <ul class="notes">{release.data.notes.map((note)=><li>{note}</li>)}</ul>}</div></article>))}
+  </section>
+</BaseLayout>

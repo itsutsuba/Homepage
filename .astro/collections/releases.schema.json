@@ -1,0 +1,110 @@
+{
+  "$ref": "#/definitions/releases",
+  "definitions": {
+    "releases": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "released": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "not": {}
+                },
+                {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    {
+                      "type": "integer",
+                      "format": "unix-time"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "market": {
+          "type": "string",
+          "default": ""
+        },
+        "type": {
+          "type": "string",
+          "default": "Release"
+        },
+        "xfade": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "not": {}
+                },
+                {
+                  "type": "string",
+                  "format": "uri"
+                }
+              ]
+            },
+            {
+              "type": "string",
+              "const": ""
+            }
+          ],
+          "default": ""
+        },
+        "featured": {
+          "type": "boolean",
+          "default": false
+        },
+        "tracks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string",
+                "format": "uri"
+              }
+            },
+            "required": [
+              "title"
+            ],
+            "additionalProperties": false
+          },
+          "default": []
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}
