@@ -1,20 +1,111 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
+
 const releases = await getCollection("releases");
-const latest = releases.filter((r) => r.data.released).sort((a,b)=>Number(b.data.released)-Number(a.data.released)).slice(0,3);
-const formatDate = (date) => date ? new Intl.DateTimeFormat("ja-JP", { year:"numeric", month:"2-digit", day:"2-digit" }).format(date) : "";
+const latest = releases
+  .filter((release) => release.data.released)
+  .sort((a, b) => Number(b.data.released) - Number(a.data.released))
+  .slice(0, 3);
+
+const latestRelease = latest[0];
+
+const formatDate = (date) =>
+  date
+    ? new Intl.DateTimeFormat("ja-JP", { year: "numeric", month: "2-digit", day: "2-digit" }).format(date)
+    : "";
 ---
+
 <BaseLayout>
   <section class="hero">
-    <p class="eyebrow">Urooboe Orange</p>
-    <h1>ロックを、少し歪んだ記憶の色で。</h1>
-    <p class="lead">うろ覚えオレンジは、ギターを軸にしたロック、ボーカルシンセ、宅録サウンドを制作する音楽サークルです。</p>
-    <div class="actions"><a class="button primary" href={`${import.meta.env.BASE_URL}music/`}>作品を見る</a><a class="button" href={`${import.meta.env.BASE_URL}profile/`}>プロフィール</a></div>
+    <div class="hero-copy">
+      <p class="eyebrow">Urooboe Orange</p>
+      <h1>うろ覚えの温度で、ロックを鳴らす。</h1>
+      <p class="lead">
+        うろ覚えオレンジは、ギターを軸にしたロック、ボーカルシンセ、宅録サウンドを制作する音楽サークルです。
+      </p>
+      <div class="actions">
+        <a class="button primary" href={`${import.meta.env.BASE_URL}music/`}>作品を見る</a>
+        <a class="button" href={`${import.meta.env.BASE_URL}contact/`}>連絡先</a>
+      </div>
+    </div>
+
+    {latestRelease && (
+      <aside class="hero-panel" aria-label="最新リリース">
+        <div class="hero-release">
+          <div class="artwork">Artwork</div>
+          <div>
+            <p class="eyebrow">Latest release</p>
+            <h2>{latestRelease.data.title}</h2>
+            <p class="meta">
+              {formatDate(latestRelease.data.released)}
+              {latestRelease.data.market ? ` / ${latestRelease.data.market}` : ""}
+            </p>
+            <p>{latestRelease.body || "作品説明をここに入れます。"}</p>
+            <a class="text-link" href={`${import.meta.env.BASE_URL}music/#${latestRelease.slug}`}>詳細を見る</a>
+          </div>
+        </div>
+      </aside>
+    )}
   </section>
+
   <section class="section">
-    <div class="section-head"><p class="eyebrow">Latest releases</p><h2>最近の作品</h2></div>
-    <div class="release-grid">{latest.map((release) => (<article class="release-card"><div class="artwork">Artwork</div><div><p class="meta">{formatDate(release.data.released)} / {release.data.market}</p><h3>{release.data.title}</h3><p>{release.body || "作品説明をここに入れます。"}</p><a class="text-link" href={`${import.meta.env.BASE_URL}music/#${release.slug}`}>詳細</a></div></article>))}</div>
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Event</p>
+        <h2>イベント情報</h2>
+      </div>
+    </div>
+
+    <article class="event-card">
+      <div class="event-date">
+        <div>
+          <small>Next</small>
+          <span>M3</span>
+        </div>
+      </div>
+      <div>
+        <h3>次回参加イベント</h3>
+        <p>
+          参加予定イベント、スペース番号、新譜情報をここに掲載します。
+          未定の場合は「現在準備中」としておくと更新しやすいです。
+        </p>
+      </div>
+    </article>
   </section>
-  <section class="section split"><div><p class="eyebrow">Concept</p><h2>シンプルに、更新しやすく。</h2></div><p>作品情報はMarkdownで管理し、一覧ページはAstroで自動生成します。作品を追加するときは、<code>src/content/releases/</code> にMarkdownファイルを1つ追加します。</p></section>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Discography</p>
+        <h2>最近の作品</h2>
+      </div>
+      <a class="text-link" href={`${import.meta.env.BASE_URL}music/`}>すべて見る</a>
+    </div>
+
+    <div class="release-grid">
+      {latest.map((release) => (
+        <article class="release-card">
+          <div class="artwork">Artwork</div>
+          <div>
+            <p class="meta">{formatDate(release.data.released)} / {release.data.market}</p>
+            <h3>{release.data.title}</h3>
+            <p>{release.body || "作品説明をここに入れます。"}</p>
+            <a class="text-link" href={`${import.meta.env.BASE_URL}music/#${release.slug}`}>詳細</a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section split">
+    <div>
+      <p class="eyebrow">About</p>
+      <h2>作品を見やすく、更新しやすく。</h2>
+    </div>
+    <p>
+      作品情報はMarkdownで管理し、一覧ページはAstroで自動生成します。
+      作品を追加するときは、<code>src/content/releases/</code> にMarkdownファイルを1つ追加します。
+    </p>
+  </section>
 </BaseLayout>
