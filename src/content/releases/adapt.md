@@ -3,7 +3,7 @@ title: "Adapt"
 released: 2024-10-27
 market: "秋M3 F-21a"
 type: "Album"
-cover: "images\releases\adapt.png"
+cover: "images/releases/adapt.png"
 xfade: ""
 featured: false
 tracks: []
