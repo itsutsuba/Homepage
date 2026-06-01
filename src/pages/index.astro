@@ -33,7 +33,17 @@ const formatDate = (date) =>
     {latestRelease && (
       <aside class="hero-panel" aria-label="最新リリース">
         <div class="hero-release">
-          <div class="artwork">Artwork</div>
+          {
+            latestRelease.data.cover ? (
+              <img
+                class="artwork"
+                src={`${import.meta.env.BASE_URL}${latestRelease.data.cover}`}
+                alt={`${latestRelease.data.title} artwork`}
+              />
+            ) : (
+              <div class="artwork">Artwork</div>
+            )
+          }
           <div>
             <p class="eyebrow">Latest release</p>
             <h2>{latestRelease.data.title}</h2>
@@ -86,7 +96,18 @@ const formatDate = (date) =>
     <div class="release-grid">
       {latest.map((release) => (
         <article class="release-card">
-          <div class="artwork">Artwork</div>
+          {
+            release.data.cover ? (
+              <img
+                class="artwork"
+                src={`${import.meta.env.BASE_URL}${release.data.cover}`}
+                alt={`${release.data.title} artwork`}
+                loading="lazy"
+              />
+            ) : (
+              <div class="artwork">Artwork</div>
+            )
+          }
           <div>
             <p class="meta">{formatDate(release.data.released)} / {release.data.market}</p>
             <h3>{release.data.title}</h3>

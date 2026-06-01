@@ -53,7 +53,21 @@ img {
   max-width: 100%;
   display: block;
 }
+img.artwork {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
 
+.release-card img.artwork,
+.hero-panel img.artwork {
+  aspect-ratio: 1 / 1;
+}
+
+.release-detail img.artwork.large {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
 .site-header,
 .site-footer,
 main {
