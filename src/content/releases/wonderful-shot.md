@@ -7,11 +7,11 @@ cover: "/images/releases/wonderful-shot.png"
 xfade: "https://soundcloud.com/itsutsuba55/2023m3"
 featured: false
 tracks:
-  - title: "01.星屑の約束"
-  - title: "02.ネオンライト"
-  - title: "03.青き虚空"
-  - title: "04.夕焼け空にロマンスを"
-  - title: "05.深海"
+  - title: "星屑の約束"
+  - title: "ネオンライト"
+  - title: "青き虚空"
+  - title: "夕焼け空にロマンスを"
+  - title: "深海"
 notes: []
 ---
 

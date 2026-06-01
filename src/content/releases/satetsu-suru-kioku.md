@@ -7,10 +7,10 @@ cover: "/images/releases/satetsu-suru-kikoku.jpg"
 xfade: "https://soundcloud.com/itsutsuba55/2019m3ax"
 featured: false
 tracks:
-  - title: "01.フォーマルハウト(Album Ver.)"
-  - title: "02.フライト"
-  - title: "03.ナンセンス"
-  - title: "04.蹉跌"
+  - title: "フォーマルハウト(Album Ver.)"
+  - title: "フライト"
+  - title: "ナンセンス"
+  - title: "蹉跌"
 notes: []
 ---
 

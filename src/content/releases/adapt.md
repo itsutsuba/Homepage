@@ -7,13 +7,13 @@ cover: "/images/releases/adapt.png"
 xfade: "https://soundcloud.com/itsutsuba55/2024m3ax"
 featured: false
 tracks:
-  - title: "01.ステージング"
-  - title: "02.消えない真夜中"
-  - title: "03.ナイトパレード"
-  - title: "04.イグジステンス"
-  - title: "05.フライト"
-  - title: "06.7th heaven"
-  - title: "07.カッシーニの間隙"
+  - title: "ステージング"
+  - title: "消えない真夜中"
+  - title: "ナイトパレード"
+  - title: "イグジステンス"
+  - title: "フライト"
+  - title: "7th heaven"
+  - title: "カッシーニの間隙"
 notes: []
 ---
 
