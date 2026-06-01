@@ -11,7 +11,7 @@ tracks:
   - title: "幕間"
   - title: "真夜中に消える（inst.）"
   - title: "またいつか"
-notes:
+notes: []
 ---
 
 真夜中に消える の説明文をここに入れます。

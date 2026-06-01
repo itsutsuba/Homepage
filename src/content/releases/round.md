@@ -5,8 +5,8 @@ market: "秋M3"
 type: "Album"
 xfade: "https://soundcloud.com/itsutsuba55/2022m3ax"
 featured: false
-tracks:
-notes:
+tracks: []
+notes: []
 ---
 
 ラウンド の説明文をここに入れます。

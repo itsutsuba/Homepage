@@ -14,7 +14,7 @@ tracks:
   - title: "なつの箱庭"
   - title: "青い夢"
   - title: "流星"
-notes:
+notes: []
 ---
 
 青い箱庭 の説明文をここに入れます。

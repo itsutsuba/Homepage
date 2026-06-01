@@ -10,7 +10,7 @@ tracks:
   - title: "フライト"
   - title: "ナンセンス"
   - title: "蹉跌"
-notes:
+notes: []
 ---
 
 蹉跌する記憶 の説明文をここに入れます。

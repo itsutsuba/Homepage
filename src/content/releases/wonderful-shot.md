@@ -5,8 +5,8 @@ market: "秋M3"
 type: "Album"
 xfade: ""
 featured: false
-tracks:
-notes:
+tracks: []
+notes: []
 ---
 
 ワンダフルショット の説明文をここに入れます。

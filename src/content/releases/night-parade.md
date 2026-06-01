@@ -14,7 +14,7 @@ tracks:
   - title: "曖昧ノスタルジー"
   - title: "シーカー"
   - title: "暁"
-notes:
+notes: []
 ---
 
 ナイトパレード の説明文をここに入れます。

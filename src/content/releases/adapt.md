@@ -5,8 +5,8 @@ market: "秋M3 F-21a"
 type: "Album"
 xfade: ""
 featured: false
-tracks:
-notes:
+tracks: []
+notes: []
 ---
 
 Adapt の説明文をここに入れます。
