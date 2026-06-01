@@ -3,6 +3,7 @@ title: "真夜中に消える"
 released: 2021-10-31
 market: "秋M3 K-18"
 type: "Album"
+cover: "/images/releases/mayonaka-ni-kieru.png"
 xfade: "https://soundcloud.com/itsutsuba55/2021m3ax"
 featured: false
 tracks:

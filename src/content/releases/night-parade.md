@@ -3,6 +3,7 @@ title: "ナイトパレード"
 released: 2020-10-25
 market: "秋M3 M-03"
 type: "Album"
+cover: "/images/releases/night-parade.jpg"
 xfade: "https://soundcloud.com/itsutsuba55/2020m3ax"
 featured: false
 tracks:

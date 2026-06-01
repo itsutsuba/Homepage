@@ -3,6 +3,7 @@ title: "青い箱庭"
 released: 2018-08-10
 market: "C94 1日目 西て-11a"
 type: "Album"
+cover: "/images/releases/aoi-hakoniwa.jpg"
 xfade: "https://soundcloud.com/itsutsuba55/c94-xfade"
 featured: false
 tracks:

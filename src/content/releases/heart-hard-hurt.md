@@ -3,6 +3,7 @@ title: "ハートハードハート"
 released: 2021-04-25
 market: "春M3 シ-07"
 type: "Album"
+cover: "/images/releases/heart-hard-hurt.jpg"
 xfade: "https://soundcloud.com/itsutsuba55/2021m3sx"
 featured: false
 tracks:

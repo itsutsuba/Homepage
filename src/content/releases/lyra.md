@@ -3,6 +3,7 @@ title: "ライラ"
 released: 2012-01-08
 market: "COMIC CITY大阪87 な53b"
 type: "Album"
+cover: "/images/releases/lyra.jpg"
 xfade: "https://soundcloud.com/itsutsuba55/lyra"
 featured: false
 tracks:

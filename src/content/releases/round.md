@@ -3,6 +3,7 @@ title: "ラウンド"
 released: 2022-10-30
 market: "秋M3"
 type: "Album"
+cover: "/images/releases/round.png"
 xfade: "https://soundcloud.com/itsutsuba55/2022m3ax"
 featured: false
 tracks: []

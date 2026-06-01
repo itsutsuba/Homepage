@@ -3,6 +3,7 @@ title: "タイムフォール"
 released: 2020-03-29
 market: "春M3 ケ-08b"
 type: "Album"
+cover: "/images/releases/timefall.jpg"
 xfade: "https://soundcloud.com/itsutsuba55/2020m3sx"
 featured: false
 tracks:
