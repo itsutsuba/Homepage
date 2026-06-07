@@ -46,7 +46,7 @@ const grouped = sorted.reduce((acc, release) => {
                   <img
                     class="artwork large"
                     src={`${import.meta.env.BASE_URL}${release.data.cover}`}
-                    alt{`${release.data.title} artwork`}
+                    alt={`${release.data.title} artwork`}
                     loading="lazy"
                   />
                 ) : (
@@ -61,7 +61,7 @@ const grouped = sorted.reduce((acc, release) => {
                   {release.data.market ? ` / ${release.data.market}` : ""}
                 </p>
 
-                {release.body && <p>{release.body}</p>}
+                {release.body && <p class="album-description">{release.body}</p>}
 
                 {release.data.tracks.length > 0 && (
                   <>

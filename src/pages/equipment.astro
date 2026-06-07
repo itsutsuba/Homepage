@@ -1,0 +1,573 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const gearSections = [
+  {
+    title: "Guitar",
+    open: true,
+    items: [
+      "八弦小唄 60's Telecastser Custom Type Alder/Brazilian Rosewood Aged Lacquer Old Lake Placid Bule # 11062 w/R.Cocco FINEST HANDMADE 10-46 RC10",
+      "Momose Stratocator MST1-STD/NJ LPB-Relic # 9672 w/R.Cocco FINEST HANDMADE 10-46 RC10",
+      "Momose MTL1-STD 3ToneSunburst w/R.Cocco FINEST HANDMADE 10-46 RC10",
+      "VG KTR-ES CST Cherry w/Bigsby w/D'Addario XTE1046 Regular Light",
+      "Gibson Southern Jumbo VOS 2016 # 19041498 w/R.Cocco FINEST HANDMADE 12-52 RC12A",
+    ],
+  },
+  {
+    title: "Bass",
+    open: true,
+    items: [
+      "Navigator N-PB-360 LTD Black w/D'Addario NYXL50105 Long Scale Medium 50-105",
+      "Squier Vintage Modified Jazz Bass '70s w/R.Cocco FINEST HANDMADE 45-105 RC4GN",
+    ],
+  },
+  {
+    title: "Amplifier",
+    open: true,
+    items: [
+      "Kemper Profiler Power Rack",
+      "Marshall SV20H",
+      "Orange Rocker30H w/PPC112",
+      "Orange Rocker15C",
+      "UNIVERSAL AUDIO OX",
+    ],
+  },
+  {
+    title: "Effector",
+    open: false,
+    groups: [
+      {
+        title: "Dynamics",
+        items: [
+          "Animals Pedal 1927 Home Run King Comp. #Compressor",
+          "Empress Effects Compressor #Compressor",
+        ],
+      },
+      {
+        title: "Pitch / Filter",
+        items: [
+          "Digi-tech WHAMMY-4 #Pitchsifter",
+          "ELECTRO-HARMONIX POG2 #Octaver",
+          "MXR MC404 CAE Wah #Wah",
+        ],
+      },
+      {
+        title: "Fuzz / Drive",
+        items: [
+          "ANALOG.MAN SUN FACE 2SB175 #Fuzz",
+          "CHICAGO IRON Octavian #Fuzz",
+          "EARTHQUAKER DEVICES Hizumitas Gloss Black #Fuzz",
+          "ROTOSOUND Fuzz Pedal RFB1 #Fuzz",
+          "WrenAndCuff Tri-Pie 70' #Fuzz",
+          "Z.VEX Fuzz Factory from 1999 Myrold handpainted Green version #Fuzz",
+          "Presctiption Electronics Inc. Experience #Fuzz",
+          "BOSS OD-200 Hybrid Drive #Overdrive",
+          "BOSS BD-2W Bluse Driver #Overdrive",
+        ],
+      },
+      {
+        title: "Boost / Preamp / EQ",
+        items: [
+          "KLON KTR #Booster",
+          "XOTIC RC Booster V2 #Booster",
+          "Orange Terror Stamp Foot Board Preamp #Preamp",
+          "TECH21 VT Bass DI #BassDI",
+          "Empress Effects ParaEq w/Boost #EQ",
+        ],
+      },
+      {
+        title: "Modulation",
+        items: [
+          "BOSS PH-3 Phase Shifter #Phaser",
+          "ARION SCH-Z Stereo Chorus #Chorus",
+          "Animals Pedal Car Crush Chorus/Vibe #Chorus #Vibe",
+          "ELECTRO-HARMONIX DELUXE ELECTRIC MISTRESS #Flanger",
+          "ELECTRO-HARMONIX STEREO PULSAR #Tremolo",
+          "SUBDECAY Prometheus DLX #Modulator",
+          "WARM AUDIO RingerBringer #RingModulator",
+          "MXR M222 Talk Box #TalkingModulator",
+        ],
+      },
+      {
+        title: "Delay / Reverb",
+        items: [
+          "MXR M169 Carbon Copy Analog Delay #Delay",
+          "Empress Effects superdelay #Delay",
+          "ELECTRO-HARMONIX DELUXE MEMORY BOY #Delay",
+          "BOSS RE-2 Space Echo #Reverb",
+        ],
+      },
+      {
+        title: "Control / Utility / Power",
+        items: [
+          "EBOW E-BOW Plus #Sustainer",
+          "BOSS EV-30 Dual Expression Pedal #ExpressionPedal",
+          "BOSS FV-500H Foot Volume #ExpressionPedal",
+          "BOSS FS-6 Dual Footswitch #FootSwitch",
+          "JIM DUNLOP CHROMED STEEL SLIDE MEDIUM #SildeBar",
+          "One Control Distro Black #PowerSupply",
+          "One Control Crocodile Tail Loop OC10 #Switcher",
+          "FURMAN SS-6 #PowerStrip",
+          "FURMAN SS-6B #PowerStrip",
+          "ESW Subtle Volume Control #Volume",
+          "BOSS TU-05 Clip-On Tuner #Tuner",
+          "BOSS TU-3 Chromatic Tuner #Tuner",
+          "DANELECTRO DB1/E #Battery",
+        ],
+      },
+    ],
+  },
+  {
+    title: "Headphone",
+    open: false,
+    items: ["AKG K240MK2", "audio-technica ATH-70x", "SONY MDR-7506"],
+  },
+  {
+    title: "Microphone",
+    open: false,
+    items: [
+      "SE ELECTRONICS VR-1",
+      "SHNNHEISER MD 412-II",
+      "SHNNHEISER e 906",
+      "SHURE SM57",
+      "MXL R144",
+    ],
+  },
+  {
+    title: "VST Plugins",
+    open: false,
+    groups: [
+      {
+        title: "A.O.M.",
+        items: [
+          "Invisible Limiter LL",
+          "Invisible Limiter G2",
+          "Invisible Limiter",
+          "Invisible Limiter G3",
+          "Kujaku",
+          "tranQuilizer",
+          "tranQuilizer G2",
+        ],
+      },
+      {
+        title: "BFD / Celemony / Techno-Speech",
+        items: ["BFD3", "Melodyne", "VoiSona Song Editor", "VoiSona Song ARA Plugin"],
+      },
+      {
+        title: "IK Multimedia / T-RackS 5",
+        groups: [
+          {
+            title: "Mastering / Suite",
+            items: ["TR5 Suite", "TR5 One", "TR5 Master Match", "Lurssen Mastering Console"],
+          },
+          {
+            title: "EQ",
+            items: [
+              "TR5 Master EQ-432",
+              "TR5 Linear Phase EQ",
+              "TR5 EQual",
+              "TR5 EQ-PG",
+              "TR5 EQ-PB",
+              "TR5 EQ-PA",
+              "TR5 EQP-1A",
+              "TR5 EQ-81",
+              "TR5 EQ-73",
+              "TR5 Classic EQ",
+              "TR5 White Channel",
+              "TR5 British Channel",
+            ],
+          },
+          {
+            title: "Compressor / Dynamics / Limiter",
+            items: [
+              "TR5 Opto Comp",
+              "TR5 Precision Comp-Limiter",
+              "TR5 Quad Compressor",
+              "TR5 Quad Limiter",
+              "TR5 Stealth Limiter",
+              "TR5 Comprexxor",
+              "TR5 Classic Multi Band Limiter",
+              "TR5 Classic Comp",
+              "TR5 Bus Compressor",
+              "TR5 VC-670",
+              "TR5 Brickwall Limiter",
+              "TR5 White 2A",
+              "TR5 Black 76",
+              "TR5 Dyna-Mu",
+              "TR5 Saturator X",
+            ],
+          },
+          {
+            title: "Reverb / Delay",
+            items: [
+              "TR5 Fame Studio Reverb",
+              "TR5 Sunset Sound Studio Reverb",
+              "TR5 The Farm Stone Room",
+              "TR5 CSR Room",
+              "TR5 CSR Plate",
+              "TR5 CSR Inverse",
+              "TR5 CSR Hall",
+              "TR5 Space Delay",
+              "TR5 Tape Echo",
+            ],
+          },
+          {
+            title: "Tape / Character",
+            items: [
+              "TR5 Tape Machine 24",
+              "TR5 Tape Machine 80",
+              "TR5 Tape Machine 99",
+              "TR5 TASCAM 388",
+              "TR5 TASCAM PORTA ONE",
+              "TR5 TEAC A-3340S",
+              "TR5 TEAC A-6100 MKII",
+              "TR5 Classic Clipper",
+            ],
+          },
+          {
+            title: "Other / Instruments",
+            items: [
+              "TR5 Mic Room",
+              "TR5 Leslie",
+              "TR5 Joe Chiccarelli Vocal Strip",
+              "TR5 Quad Image",
+              "AmpliTube 5",
+              "MODO BASS",
+              "Philharmonik 2",
+              "Hammond B-3X",
+            ],
+          },
+        ],
+      },
+      {
+        title: "iZotope",
+        items: ["Ozone Imager 2", "Trash", "Vinyl"],
+      },
+      {
+        title: "Native Instruments",
+        items: ["Kontakt 8", "Massive", "Massive X", "Raum", "Replika", "Supercharger"],
+      },
+      {
+        title: "Plugin Alliance",
+        groups: [
+          {
+            title: "EQ / Utility / Analysis",
+            items: [
+              "bx_cleansweep V2",
+              "SPL Free Ranger",
+              "bx_boom",
+              "bx_shredspread",
+              "elysia niveau filter",
+              "bx_subfilter",
+              "bx_masterdesk Classic",
+              "bx_meter",
+              "bx_solo",
+              "bx_tuner",
+            ],
+          },
+          {
+            title: "Dynamics",
+            items: ["Shadow Hills Class A Mastering Compressor", "bx_opto Pedal"],
+          },
+          {
+            title: "Saturation / Distortion / Guitar",
+            items: [
+              "Black Box Analog Design HG-2MS",
+              "Black Box Analog Design HG-2",
+              "bx_distorange",
+              "bx_greenscreamer",
+              "bx_megasingle",
+              "bx_metal2",
+              "bx_rockrack V3 Player",
+              "bx_yellowdrive",
+              "bx_blackdist2",
+            ],
+          },
+          { title: "Modulation", items: ["bx_bluechorus2"] },
+        ],
+      },
+      {
+        title: "Soundtoys",
+        items: [
+          "EchoBoy Jr",
+          "EchoBoy",
+          "Devil-Loc Deluxe",
+          "Devil-Loc",
+          "Little MicroShift",
+          "Decapitator",
+          "Crystallizer",
+          "Little Plate",
+          "EffectRack",
+          "Little Radiator",
+          "MicroShift",
+          "PanMan",
+          "PhaseMistress",
+          "PrimalTap",
+          "Little AlterBoy",
+          "FilterFreak2",
+          "Radiator",
+          "Tremolator",
+          "SuperPlate",
+          "Little PrimalTap",
+          "Sie-Q",
+          "SpaceBlender",
+          "FilterFreak1",
+        ],
+      },
+      {
+        title: "UADx",
+        groups: [
+          {
+            title: "Compressor / Dynamics",
+            items: [
+              "UADx 1176 FET Compressor",
+              "UADx 1176 Rev A Compressor",
+              "UADx 1176AE Compressor",
+              "UADx 1176LN Rev E Compressor",
+              "UADx 175-B Compressor",
+              "UADx 176 Compressor",
+              "UADx API 2500 Bus Compressor",
+              "UADx A-Type Multiband Enhancer",
+              "UADx Capitol Mastering Compressor",
+              "UADx dbx 160 Compressor",
+              "UADx Empirical Labs Distressor",
+              "UADx Fairchild 660 Compressor",
+              "UADx Fairchild 670 Compressor",
+              "UADx LA-2A Compressor",
+              "UADx LA-2A Gray Compressor",
+              "UADx LA-2A Silver Compressor",
+              "UADx LA-2A Tube Compressor",
+              "UADx LA-3A Compressor",
+              "UADx Manley Variable Mu Compressor",
+              "UADx SSL G Bus Compressor",
+            ],
+          },
+          {
+            title: "Channel Strip / Preamp / EQ",
+            items: [
+              "UADx API Vision Channel Strip",
+              "UADx Avalon VT-737 Channel Strip",
+              "UADx Century Tube Channel Strip",
+              "UADx Helios Type 69 Preamp and EQ",
+              "UADx Hitsville EQ",
+              "UADx Hitsville EQ Mastering",
+              "UADx LA-6176 Channel Strip",
+              "UADx Manley Massive Passive EQ",
+              "UADx Manley Massive Passive Mastering EQ",
+              "UADx Manley Tube Preamp",
+              "UADx Manley VOXBOX Channel Strip",
+              "UADx Neve 1073 Preamp and EQ",
+              "UADx Pultec EQP-1A EQ",
+              "UADx Pultec HLF-3C EQ",
+              "UADx Pultec MEQ-5 EQ",
+              "UADx SSL E Channel Strip",
+              "UADx Topline Vocal Suite",
+            ],
+          },
+          {
+            title: "Reverb / Delay / Space",
+            items: [
+              "UADx Capitol Chambers",
+              "UADx Galaxy Tape Echo",
+              "UADx Hitsville Reverb Chambers",
+              "UADx Lexicon 224 Digital Reverb",
+              "UADx Ocean Way Studios Deluxe",
+              "UADx Pure Plate Reverb",
+              "UADx Sound City Studios",
+            ],
+          },
+          {
+            title: "Guitar / Amp / Tape / Character",
+            items: [
+              "UADx Ampex ATR-102 Master Tape",
+              "UADx Dream 65 Reverb Amp",
+              "UADx Lion 68 Super Lead Amp",
+              "UADx Oxide Tape Recorder",
+              "UADx Ruby 63 Top Boost Amp",
+              "UADx Studer A800 Tape Recorder",
+              "UADx Vibe Analog Machines",
+              "UADx Vibe Analog Machines Essentials",
+              "UADx Woodrow 55 Instrument Amp",
+            ],
+          },
+          {
+            title: "Instruments / Modulation",
+            items: [
+              "UADx Anthem Synth",
+              "UADx Brigade Chorus",
+              "UADx Electra 88 Vintage Keys",
+              "UADx Moog Minimoog Synth",
+              "UADx Opal Morphing Synth",
+              "UADx PolyMAX Synth",
+              "UADx Ravel Grand Piano",
+              "UADx Studio D Chorus",
+              "UADx Waterfall B3 Organ",
+              "UADx Waterfall Rotary Speaker",
+            ],
+          },
+        ],
+      },
+      {
+        title: "Waves",
+        items: [
+          "R-Bass Stereo",
+          "R-Bass Mono",
+          "SuperTap 2-Taps Mono",
+          "SuperTap 2-Taps Stereo",
+          "SuperTap 2-Taps Mono/Stereo",
+          "SuperTap 6-Taps Mono",
+          "SuperTap 6-Taps Stereo",
+          "SuperTap 6-Taps Mono/Stereo",
+        ],
+      },
+      { title: "XLN Audio", items: ["Addictive Keys"] },
+    ],
+  },
+  {
+    title: "Outboard",
+    open: false,
+    items: [
+      "RME Fireface UCX II",
+      "RME FIREFACE UC",
+      "WARM AUDIO WA-412",
+      "dbx 286s",
+      "Golden Age Project PRE-73 mk3",
+      "TASCAM AV-P25RMKIII",
+      "ROADREADY RR4UED",
+    ],
+  },
+];
+
+const countGroupItems = (group) =>
+  group.items?.length ?? group.groups?.reduce((total, subgroup) => total + countGroupItems(subgroup), 0) ?? 0;
+
+const countSectionItems = (section) =>
+  section.items?.length ?? section.groups?.reduce((total, group) => total + countGroupItems(group), 0) ?? 0;
+
+const parseGearItem = (item) => {
+  const tags = item.match(/#[^\s#]+/g) ?? [];
+  return {
+    name: item.replace(/\s*#[^\s#]+/g, "").trim(),
+    tags: tags.map((tag) => tag.slice(1)),
+  };
+};
+
+const effectorSection = gearSections.find((section) => section.title === "Effector");
+const pluginSection = gearSections.find((section) => section.title === "VST Plugins");
+const pedalItems = effectorSection ? countSectionItems(effectorSection) : 0;
+const pluginItems = pluginSection ? countSectionItems(pluginSection) : 0;
+---
+
+<BaseLayout title="Equipment">
+  <section class="page-header">
+    <p class="eyebrow">Studio Gear</p>
+    <h1>Equipment</h1>
+    <p class="lead">制作、録音、ライブまわりで使っている機材の一覧。</p>
+  </section>
+
+  <section class="gear-overview" aria-label="機材一覧の概要">
+    <article class="gear-stat">
+      <span>{gearSections.length}</span>
+      <p>Sections</p>
+    </article>
+    <article class="gear-stat">
+      <span>{pedalItems}</span>
+      <p>Pedals / Utilities</p>
+    </article>
+    <article class="gear-stat">
+      <span>{pluginItems}</span>
+      <p>Plugins</p>
+    </article>
+  </section>
+
+  <section class="gear-sections">
+    {gearSections.map((section) => (
+      <details class="gear-section" open={section.open}>
+        <summary class="gear-summary">
+          <span>
+            <span class="gear-title">{section.title}</span>
+          </span>
+          <span class="gear-count">{countSectionItems(section)}</span>
+        </summary>
+
+        {section.groups ? (
+          <div class="gear-groups">
+            {section.groups.map((group) => (
+              <details class="gear-group">
+                <summary class="gear-group-summary">
+                  <span>
+                    <span class="gear-group-title">{group.title}</span>
+                  </span>
+                  <span class="gear-count">{countGroupItems(group)}</span>
+                </summary>
+
+                {group.groups ? (
+                  <div class="gear-subgroups">
+                    {group.groups.map((subgroup) => (
+                      <section class="gear-subgroup">
+                        <div class="gear-subgroup-head">
+                          <h3>{subgroup.title}</h3>
+                          <span>{subgroup.items.length}</span>
+                        </div>
+                        <ul class="gear-list compact">
+                          {subgroup.items.map((item) => {
+                            const parsed = parseGearItem(item);
+
+                            return (
+                              <li class="gear-item">
+                                <span class="gear-name">{parsed.name}</span>
+                                {parsed.tags.length > 0 && (
+                                  <span class="gear-tags" aria-label="tags">
+                                    {parsed.tags.map((tag) => <span class="gear-tag">{tag}</span>)}
+                                  </span>
+                                )}
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      </section>
+                    ))}
+                  </div>
+                ) : (
+                  <ul class="gear-list compact">
+                    {group.items.map((item) => {
+                      const parsed = parseGearItem(item);
+
+                      return (
+                        <li class="gear-item">
+                          <span class="gear-name">{parsed.name}</span>
+                          {parsed.tags.length > 0 && (
+                            <span class="gear-tags" aria-label="tags">
+                              {parsed.tags.map((tag) => <span class="gear-tag">{tag}</span>)}
+                            </span>
+                          )}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
+              </details>
+            ))}
+          </div>
+        ) : (
+          <ul class="gear-list">
+            {section.items.map((item) => {
+              const parsed = parseGearItem(item);
+
+              return (
+                <li class="gear-item">
+                  <span class="gear-name">{parsed.name}</span>
+                  {parsed.tags.length > 0 && (
+                    <span class="gear-tags" aria-label="tags">
+                      {parsed.tags.map((tag) => <span class="gear-tag">{tag}</span>)}
+                    </span>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        )}
+      </details>
+    ))}
+  </section>
+</BaseLayout>

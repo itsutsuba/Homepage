@@ -1,7 +1,141 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const featuredWorks = [
+  {
+    title: "Original Releases",
+    kind: "Discography",
+    text: "アルバム、EP、シングルなどの自主制作作品。",
+    href: `${import.meta.env.BASE_URL}music/`,
+    label: "Music",
+  },
+  {
+    title: "Bandcamp",
+    kind: "Distribution",
+    text: "過去作品の試聴、ダウンロード配信。",
+    href: "https://fmorange55.bandcamp.com/",
+    label: "Bandcamp",
+  },
+  {
+    title: "BOOTH",
+    kind: "Store",
+    text: "CD、ダウンロード作品、イベント頒布物の通販。",
+    href: "https://itsutsuba55.booth.pm/",
+    label: "BOOTH",
+  },
+];
+
+const activitySections = [
+  {
+    title: "Songs / Videos",
+    items: [
+      {
+        title: "消えない真夜中",
+        meta: "鏡音リン / Original",
+        href: "https://www.nicovideo.jp/watch/sm34135607",
+      },
+      {
+        title: "Niconico user page",
+        meta: "投稿動画一覧",
+        href: "https://www.nicovideo.jp/user/7341380",
+      },
+      {
+        title: "Niconico mylist",
+        meta: "mylist/22270003",
+        href: "https://www.nicovideo.jp/mylist/22270003",
+      },
+    ],
+  },
+  {
+    title: "Arrangements / Participations",
+    items: [
+      {
+        title: "Tulip -Amethyst Remix-",
+        meta: "Band arrange / CINDERELL-A-RRANGE vol.3",
+        href: "https://www.nicovideo.jp/watch/sm30808772",
+      },
+      {
+        title: "Frozen Tears",
+        meta: "Band arrange",
+        href: "https://www.nicovideo.jp/watch/sm30844191",
+      },
+    ],
+  },
+  {
+    title: "Events",
+    items: [
+      {
+        title: "M3",
+        meta: "音系・メディアミックス同人即売会への参加履歴",
+        href: "https://www.m3net.jp/",
+      },
+      {
+        title: "Equipment",
+        meta: "制作・録音環境",
+        href: `${import.meta.env.BASE_URL}equipment/`,
+      },
+    ],
+  },
+];
+
+const serviceItems = [
+  "作曲 / 編曲",
+  "ギター / ベース演奏",
+  "ボーカルシンセ楽曲制作",
+  "クロスフェード / 動画用音源制作",
+  "宅録ベースのデモ制作",
+];
 ---
-<BaseLayout title="Works" description="うろ覚えオレンジの制作物一覧です。">
-  <section class="page-header"><p class="eyebrow">Works</p><h1>Works</h1><p class="lead">楽曲、動画、ジャケット、参加作品などを整理します。</p></section>
-  <section class="card-grid"><article class="info-card"><h2>Original Songs</h2><p>オリジナル楽曲。</p></article><article class="info-card"><h2>Videos</h2><p>MV、歌詞動画、クロスフェード、制作動画など。</p></article><article class="info-card"><h2>Artwork</h2><p>ジャケット、サムネイルなど。</p></article></section>
+
+<BaseLayout title="Works" description="うろ覚えオレンジの制作物、参加作品、外部公開先一覧です。">
+  <section class="page-header">
+    <p class="eyebrow">Works</p>
+    <h1>Works</h1>
+    <p class="lead">楽曲制作、アレンジ、動画、イベント参加、配信先をまとめています。</p>
+  </section>
+
+  <section class="work-feature-grid" aria-label="主要な公開先">
+    {featuredWorks.map((work) => (
+      <article class="work-feature">
+        <p class="tag">{work.kind}</p>
+        <h2>{work.title}</h2>
+        <p>{work.text}</p>
+        <a class="text-link" href={work.href} target={work.href.startsWith("http") ? "_blank" : undefined} rel={work.href.startsWith("http") ? "noopener noreferrer" : undefined}>
+          {work.label}
+        </a>
+      </article>
+    ))}
+  </section>
+
+  <section class="work-board" aria-label="活動一覧">
+    {activitySections.map((section) => (
+      <article class="work-column">
+        <header class="work-column-head">
+          <h2>{section.title}</h2>
+          <span>{section.items.length}</span>
+        </header>
+        <ul class="work-list">
+          {section.items.map((item) => (
+            <li>
+              <a href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}>
+                <span>{item.title}</span>
+                <small>{item.meta}</small>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </article>
+    ))}
+  </section>
+
+  <section class="work-services">
+    <div>
+      <p class="eyebrow">Commission</p>
+      <h2>制作相談</h2>
+    </div>
+    <ul>
+      {serviceItems.map((item) => <li>{item}</li>)}
+    </ul>
+    <a class="button primary" href={`${import.meta.env.BASE_URL}contact/`}>Contact</a>
+  </section>
 </BaseLayout>

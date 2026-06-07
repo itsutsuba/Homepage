@@ -45,6 +45,10 @@
           "type": "string",
           "default": "Release"
         },
+        "cover": {
+          "type": "string",
+          "default": ""
+        },
         "xfade": {
           "anyOf": [
             {
